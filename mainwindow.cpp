@@ -84,8 +84,8 @@ void MainWindow::StartRace(void)
         //Тут должен быть код ДЗ
         // В MainWindow, в методе StartRace, реализовать последовательный вызов методов
         // DoWork объектов concurRacq1 и concurRace2 при помощи QtConcurrent.
-        auto lambdaRace1 = [&]{concurRace1->DoWork(&number, ui->rb_mutexOn->isChecked(), ui->sb_initNum->value());};
-        auto lambdaRace2 = [&]{concurRace2->DoWork(&number, ui->rb_mutexOn->isChecked(), ui->sb_initNum->value());};
+        auto lambdaRace1 = [&]{concurRace1->DoWork(&number, false, ui->sb_initNum->value());};
+        auto lambdaRace2 = [&]{concurRace2->DoWork(&number, false, ui->sb_initNum->value());};
         QtConcurrent::run(lambdaRace1).then(lambdaRace2);
     }
     else{
